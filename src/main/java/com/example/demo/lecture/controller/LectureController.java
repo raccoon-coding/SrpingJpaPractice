@@ -13,14 +13,14 @@ public class LectureController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<LectureService> register(@RequestBody LectureDto.Register dto) {
+    public ResponseEntity<String> register(@RequestBody LectureDto.Register dto) {
         LectureService.register(dto);
 
         return ResponseEntity.status(200).body("등록 성공");
     }
 
     @GetMapping("/list")
-    public ResponseEntity<LectureDto.Lecture> list() {
+    public ResponseEntity<List<LectureDto.Lecture>> list() {
         List<LectureDto.Lecture> response = studentService.list();
 
         return ResponseEntity.status(200).body(response);
@@ -35,7 +35,7 @@ public class LectureController {
 
 
     @GetMapping("/search")
-    public ResponseEntity<LectureDto.Lecture> search(String name) {
+    public ResponseEntityList<LectureDto.Lecture> search(String name) {
         List<LectureDto.Lecture> response = LectureService.search(name);
 
 
