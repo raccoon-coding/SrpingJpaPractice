@@ -13,6 +13,12 @@ public class MovieController {
     }
 
     @GetMapping("/read")
+    public ResponseEntity<MovieDto.Movie> readMovieByName(Integer idx) {
+        MovieDto.Movie dto = movieService.read(idx);
+        return ResponseEntity.status(200).body(dto);
+    }
+
+    @GetMapping("/search")
     public ResponseEntity<MovieDto.Movie> readMovieByName(String title) {
         MovieDto.Movie dto = movieService.search(title);
         return ResponseEntity.status(200).body(dto);
