@@ -1,5 +1,7 @@
 package com.example.demo.board.dto;
 
+import com.example.demo.board.entity.BoardEntity;
+
 public class BoardDto {
     public static class Board {
         private Integer id;
