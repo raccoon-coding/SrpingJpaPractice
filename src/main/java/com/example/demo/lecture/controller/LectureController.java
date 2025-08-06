@@ -21,22 +21,22 @@ public class LectureController {
 
     @GetMapping("/list")
     public ResponseEntity<List<LectureDto.Lecture>> list() {
-        List<LectureDto.Lecture> response = studentService.list();
+        List<LectureDto.Lecture> response = lectureService.list();
 
         return ResponseEntity.status(200).body(response);
     }
 
     @GetMapping("/read")
     public ResponseEntity<LectureDto.Lecture> read(Integer idx) {
-        LectureDto.Lecture response = studentService.read(idx);
+        LectureDto.Lecture response = lectureService.read(idx);
 
         return ResponseEntity.status(200).body(response);
     }
 
 
     @GetMapping("/search")
-    public ResponseEntityList<LectureDto.Lecture> search(String name) {
-        List<LectureDto.Lecture> response = LectureService.search(name);
+    public ResponseEntityList<List<LectureDto.Lecture>> search(String name) {
+        List<LectureDto.Lecture> response = lectureService.search(name);
 
 
         return ResponseEntity.lecture(200).body(response);
