@@ -1,8 +1,12 @@
 package com.example.demo.menu.model;
 
+import lombok.Builder;
+import lombok.Getter;
+
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 public class MenuDto {
+    @Builder
     public static class Menu{
         private Integer id;
         private String name;
@@ -10,84 +14,30 @@ public class MenuDto {
         private Integer calorie;
 
         public static MenuDto.Menu from(MenuEntity entity) {
-            MenuDto.Menu dto = new MenuDto.Menu();
-            dto.setId(entity.getId());
-            dto.setName(entity.getName());
-            dto.setPrice(entity.getPrice());
-            dto.setCalorie(entity.getCalorie());
+            MenuDto.Menu dto = Menu.builder()
+                    .id(entity.getId())
+                    .name(entity.getName())
+                    .price(entity.getPrice())
+                    .calorie(entity.getCalorie())
+                    .build();
 
             return dto;
         }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getPrice() {
-            return price;
-        }
-
-        public void setPrice(Integer price) {
-            this.price = price;
-        }
-
-        public Integer getCalorie() {
-            return calorie;
-        }
-
-        public void setCalorie(Integer calorie) {
-            this.calorie = calorie;
-        }
     }
 
+    @Getter
     public static class Register{
         private String name;
         private Integer price;
         private Integer calorie;
 
         public MenuEntity toEntity() {
-            MenuEntity entity = new MenuEntity();
-            entity.setName(name);
-            entity.setPrice(price);
-            entity.setCalorie(calorie);
-
+            MenuEntity entity = MenuEntity.builder()
+                    .name(name)
+                    .price(price)
+                    .calorie(calorie)
+                    .build();
             return entity;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getPrice() {
-            return price;
-        }
-
-        public void setPrice(Integer price) {
-            this.price = price;
-        }
-
-        public Integer getCalorie() {
-            return calorie;
-        }
-
-        public void setCalorie(Integer calorie) {
-            this.calorie = calorie;
         }
     }
 }

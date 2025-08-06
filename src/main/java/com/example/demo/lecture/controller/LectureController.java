@@ -1,16 +1,14 @@
 package com.example.demo.lecture.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/lecture")
 public class LectureController {
     private final LectureService lectureService;
-
-    public LectureController(LectureService lectureService) {
-        this.lectureService = lectureService;
-    }
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody LectureDto.Register dto) {
@@ -33,11 +31,9 @@ public class LectureController {
         return ResponseEntity.status(200).body(response);
     }
 
-
     @GetMapping("/search")
     public ResponseEntityList<List<LectureDto.Lecture>> search(String name) {
         List<LectureDto.Lecture> response = lectureService.search(name);
-
 
         return ResponseEntity.lecture(200).body(response);
     }

@@ -16,7 +16,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public void register(ProductDto.Register dto) {
+    public static void register(ProductDto.Register dto) {
         productRepository.save(dto.toEntity());
     }
 
