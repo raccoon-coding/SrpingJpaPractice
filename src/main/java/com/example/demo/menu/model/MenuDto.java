@@ -2,8 +2,8 @@ package com.example.demo.menu.model;
 
 import lombok.Builder;
 import lombok.Getter;
-
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+import com.example.demo.menu.entity.MenuEntity;
 
 public class MenuDto {
     @Builder

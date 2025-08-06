@@ -18,6 +18,8 @@ repositories {
 }
 
 dependencies {
+	compileOnly 'org.projectlombok:lombok' //수정한 부분
+	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 

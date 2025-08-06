@@ -2,7 +2,6 @@ package com.example.demo.board.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -12,11 +11,17 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     public void register(BoardDto.Register dto) {
-        BoardRepogitory.save(dto.toEntiry());
+        boardRepository.save(dto.toEntity());
     }
 
     public List<BoardDto.Board> list() {
-        List<BoardEntity> result = BoardRepository.findAll();
+        List<BoardEntity> result = boardRepository.findAll();
+
+        return result.stream().map(BoardDto.Board::from).toList();
+    }
+
+    public List<BoardDto.Board> search(String title) {
+        List<BoardEntity> result = boardRepository.findByTitle(title);
 
         return result.stream().map(BoardDto.Board::from).toList();
     }
