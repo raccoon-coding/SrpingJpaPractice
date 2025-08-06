@@ -1,5 +1,6 @@
 package com.example.demo.lecture.controller;
 
+import lombok.RequiredArgsConstructor;
 import com.example.demo.lecture.dto.LectureDto;
 import com.example.demo.lecture.service.LectureService;
 import org.springframework.http.ResponseEntity;
@@ -8,13 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/lecture")
 public class LectureController {
     private final LectureService lectureService;
-
-    public LectureController(LectureService lectureService) {
-        this.lectureService = lectureService;
-    }
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody LectureDto.Register dto) {

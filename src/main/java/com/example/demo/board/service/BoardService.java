@@ -1,20 +1,14 @@
 package com.example.demo.board.service;
 
-import com.example.demo.board.dto.BoardDto;
-import com.example.demo.board.entity.BoardEntity;
-import com.example.demo.board.repository.BoardRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BoardService {
     private final BoardRepository boardRepository;
-
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
 
     public void register(BoardDto.Register dto) {
         boardRepository.save(dto.toEntity());
@@ -42,5 +36,11 @@ public class BoardService {
         }
 
         return null;
+    }
+
+    public List<BoardDto.Board> search(String name) {
+        List<BoardEntity> result = BoardRepository.findByName(name);
+
+        return result.stream().map(BoardDto.Board::from).toList();
     }
 }
