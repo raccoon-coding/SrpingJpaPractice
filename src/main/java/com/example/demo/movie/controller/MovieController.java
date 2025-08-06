@@ -25,14 +25,7 @@ public class MovieController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerMovie(@RequestBody String title,
-                                                @RequestBody String contents,
-                                                @RequestBody Integer time) {
-        MovieDto.Register dto = new MovieDto.Register();
-        dto.setTitle(title);
-        dto.setContents(contents);
-        dto.setTile(time);
-
+    public ResponseEntity<String> registerMovie(@RequestBody MovieDto.Register dto) {
         movieService.register(dto);
         return ResponseEntity.status(200).body("저장 완료했습니다.");
     }
