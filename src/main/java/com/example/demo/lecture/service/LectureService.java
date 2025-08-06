@@ -4,18 +4,16 @@ import com.example.demo.lecture.dto.LectureDto;
 import com.example.demo.lecture.entity.LectureEntity;
 import com.example.demo.lecture.repository.LectureRepository;
 import com.example.demo.menu.entity.MenuEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class LectureService {
     private final LectureRepository lectureRepository;
-
-    public LectureService(LectureRepository lectureRepository) {
-        this.lectureRepository = lectureRepository;
-    }
 
     public void register(LectureDto.Register dto) {
         lectureRepository.save(dto.toEntity());
