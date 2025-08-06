@@ -1,19 +1,21 @@
 package com.example.demo.lecture.dto;
 
+import com.example.demo.lecture.entity.LectureEntity;
+
 public class LectureDto {
     public static class Lecture {
         private Integer id;
         private String title;
-        private String description;
-        private Integer totalTime;
+        private String contents;
+        private Integer time;
         private Integer price;
 
         public static LectureDto.Lecture from(LectureEntity entity) {
             LectureDto.Lecture dto = new LectureDto.Lecture();
             dto.setId(entity.getId());
             dto.setTitle(entity.getTitle());
-            dto.setDescription(entity.getDescription());
-            dto.setTotalTime(entity.getTotalTime());
+            dto.setContents(entity.getContents());
+            dto.setTime(entity.getTime());
             dto.setPrice(entity.getPrice());
 
             return dto;
@@ -35,20 +37,20 @@ public class LectureDto {
             this.title = title;
         }
 
-        public String getDescription() {
-            return description;
+        public String getContents() {
+            return contents;
         }
 
-        public void setDescription(String description) {
-            this.description = description;
+        public void setContents(String contents) {
+            this.contents = contents;
         }
 
-        public Integer getTotalTime() {
-            return totalTime;
+        public Integer getTime() {
+            return time;
         }
 
-        public void setTotalTime(Integer totalTime) {
-            this.totalTime = totalTime;
+        public void setTime(Integer time) {
+            this.time = time;
         }
 
         public Integer getPrice() {
@@ -62,15 +64,15 @@ public class LectureDto {
 
     public static class Register {
         private String title;
-        private String description;
-        private Integer totalTime;
+        private String contents;
+        private Integer time;
         private Integer price;
 
         public LectureEntity toEntity() {
             LectureEntity entity = new LectureEntity();
             entity.setTitle(title);
-            entity.setDescription(description);
-            entity.setTotalTime(totalTime);
+            entity.setContents(contents);
+            entity.setTime(time);
             entity.setPrice(price);
 
             return entity;
@@ -84,20 +86,20 @@ public class LectureDto {
             this.title = title;
         }
 
-        public String getDescription() {
-            return description;
+        public String getContents() {
+            return contents;
         }
 
-        public void setDescription(String description) {
-            this.description = description;
+        public void setContents(String contents) {
+            this.contents = contents;
         }
 
-        public Integer getTotalTime() {
-            return totalTime;
+        public Integer getTime() {
+            return time;
         }
 
-        public void setTotalTime(Integer totalTime) {
-            this.totalTime = totalTime;
+        public void setTime(Integer time) {
+            this.time = time;
         }
 
         public Integer getPrice() {

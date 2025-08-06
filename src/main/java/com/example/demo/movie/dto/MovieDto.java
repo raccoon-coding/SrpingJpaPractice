@@ -1,20 +1,19 @@
 package com.example.demo.movie.dto;
 
-import com.example.demo.board.dto.BoardDto;
-import com.example.demo.board.entity.BoardEntity;
+import com.example.demo.movie.model.MovieEntity;
 
 public class MovieDto {
     public static class Movie {
         private Integer id;
         private String title;
-        private String description;
+        private String contents;
         private Integer time;
 
         public static MovieDto.Movie from(MovieEntity entity) {
             MovieDto.Movie dto = new MovieDto.Movie();
             dto.setId(entity.getId());
             dto.setTitle(entity.getTitle());
-            dto.setDescription(entity.getDescription());
+            dto.setContents(entity.getContents());
             dto.setTime(entity.getTime());
 
             return dto;
@@ -36,12 +35,12 @@ public class MovieDto {
             this.title = title;
         }
 
-        public String getDescription() {
-            return description;
+        public String getContents() {
+            return contents;
         }
 
-        public void setDescription(String description) {
-            this.description = description;
+        public void setContents(String contents) {
+            this.contents = contents;
         }
 
         public Integer getTime() {
@@ -55,13 +54,13 @@ public class MovieDto {
 
     public static class Register {
         private String title;
-        private String description;
+        private String contents;
         private Integer time;
 
         public MovieEntity toEntity() {
             MovieEntity entity = new MovieEntity();
             entity.setTitle(title);
-            entity.setDescription(description);
+            entity.setContents(contents);
             entity.setTime(time);
 
             return entity;
@@ -75,12 +74,12 @@ public class MovieDto {
             this.title = title;
         }
 
-        public String getDescription() {
-            return description;
+        public String getContents() {
+            return contents;
         }
 
-        public void setDescription(String description) {
-            this.description = description;
+        public void setContents(String contents) {
+            this.contents = contents;
         }
 
         public Integer getTime() {

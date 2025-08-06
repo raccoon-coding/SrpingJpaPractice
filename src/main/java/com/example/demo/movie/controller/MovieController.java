@@ -1,7 +1,11 @@
 package com.example.demo.movie.controller;
 
+import com.example.demo.movie.dto.MovieDto;
+import com.example.demo.movie.service.MovieService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/movie")
@@ -19,8 +23,8 @@ public class MovieController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<MovieDto.Movie> readMovieByName(String title) {
-        MovieDto.Movie dto = movieService.search(title);
+    public ResponseEntity<List<MovieDto.Movie>> readMovieByName(String title) {
+        List<MovieDto.Movie> dto = movieService.search(title);
         return ResponseEntity.status(200).body(dto);
     }
 

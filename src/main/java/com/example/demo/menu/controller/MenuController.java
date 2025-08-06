@@ -1,5 +1,6 @@
 package com.example.demo.menu.controller;
 
+import com.example.demo.menu.model.MenuDto;
 import com.example.demo.menu.service.MenuService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

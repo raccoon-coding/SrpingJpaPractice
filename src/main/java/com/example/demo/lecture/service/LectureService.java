@@ -1,5 +1,6 @@
 package com.example.demo.lecture.service;
 
+import com.example.demo.lecture.dto.LectureDto;
 import com.example.demo.lecture.entity.LectureEntity;
 import com.example.demo.lecture.repository.LectureRepository;
 import com.example.demo.menu.entity.MenuEntity;
@@ -32,11 +33,12 @@ public class LectureService {
     }
 
     public List<LectureDto.Lecture> list() {
-        List<LectureEntity> list = repository.findAll();
+        List<LectureEntity> list = lectureRepository.findAll();
         return list.stream().map(LectureDto.Lecture::from).toList();
     }
 
     public List<LectureDto.Lecture> search(String title) {
-        List<LectureEntity> result = lectureRepository.findByTitle();
+        List<LectureEntity> result = lectureRepository.findByTitle(title);
+        return result.stream().map(LectureDto.Lecture::from).toList();
     }
 }

@@ -1,9 +1,10 @@
 package com.example.demo.movie.service;
 
 import com.example.demo.movie.dto.MovieDto;
+import com.example.demo.movie.model.MovieEntity;
+import com.example.demo.movie.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,17 +16,17 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public static void register(MovieDto.Register dto) {
+    public void register(MovieDto.Register dto) {
         movieRepository.save(dto.toEntity());
     }
 
-    public static List<MovieDto.Movie> list() {
-        List<MovieDto.Movie> result = movieRepository.findAll();
+    public List<MovieDto.Movie> list() {
+        List<MovieEntity> result = movieRepository.findAll();
 
         return result.stream().map(MovieDto.Movie::from).toList();
     }
 
-    public static MovieDto.Movie read(Integer id) {
+    public MovieDto.Movie read(Integer id) {
         Optional<MovieEntity> result = movieRepository.findById(id);
 
         if (result.isPresent()) {
@@ -37,8 +38,8 @@ public class MovieService {
         return null;
     }
 
-    public static List<MovieDto.Movie> search(String title) {
-        List<MovieDto.Movie> result = movieRepository.findByTitle();
+    public List<MovieDto.Movie> search(String title) {
+        List<MovieEntity> result = movieRepository.findByTitle(title);
 
         return result.stream().map(MovieDto.Movie::from).toList();
     }

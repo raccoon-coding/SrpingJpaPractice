@@ -1,6 +1,6 @@
 package com.example.demo.menu.model;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+import com.example.demo.menu.entity.MenuEntity;
 
 public class MenuDto {
     public static class Menu{
@@ -14,7 +14,7 @@ public class MenuDto {
             dto.setId(entity.getId());
             dto.setName(entity.getName());
             dto.setPrice(entity.getPrice());
-            dto.setCalorie(entity.getCalorie());
+            dto.setCalorie(entity.getCalories());
 
             return dto;
         }
@@ -61,7 +61,7 @@ public class MenuDto {
             MenuEntity entity = new MenuEntity();
             entity.setName(name);
             entity.setPrice(price);
-            entity.setCalorie(calorie);
+            entity.setCalories(calorie);
 
             return entity;
         }

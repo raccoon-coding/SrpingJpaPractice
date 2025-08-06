@@ -19,14 +19,13 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity list() {
+    public ResponseEntity<List<ProductDto.Product>> list() {
         List<ProductDto.Product> response = productService.list();
-
         return ResponseEntity.status(200).body(response);
     }
 
     @GetMapping("/read")
-    public ResponseEntity read(Integer idx) {
+    public ResponseEntity<ProductDto.Product> read(Integer idx) {
         ProductDto.Product response = productService.read(idx);
 
         return ResponseEntity.status(200).body(response);
@@ -34,7 +33,7 @@ public class ProductController {
 
 
     @GetMapping("/search")
-    public ResponseEntity search(String name) {
+    public ResponseEntity<List<ProductDto.Product>> search(String name) {
         List<ProductDto.Product> response = productService.search(name);
 
         return ResponseEntity.status(200).body(response);
