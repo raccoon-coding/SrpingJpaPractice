@@ -2,6 +2,7 @@ package com.example.demo.menu.controller;
 
 import com.example.demo.menu.model.MenuDto;
 import com.example.demo.menu.service.MenuService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,12 +10,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/menu")
+@RequiredArgsConstructor
 public class MenuController {
     private final MenuService menuService;
-
-    public MenuController(MenuService menuservice) {
-        this.menuService = menuservice;
-    }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody MenuDto.Register dto) {
