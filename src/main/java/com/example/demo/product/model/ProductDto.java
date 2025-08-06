@@ -1,5 +1,7 @@
 package com.example.demo.product.model;
 
+import com.example.demo.product.entity.ProductEntity;
+
 public class ProductDto {
 
     public static class Product {
