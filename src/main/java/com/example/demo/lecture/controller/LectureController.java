@@ -1,7 +1,11 @@
 package com.example.demo.lecture.controller;
 
+import com.example.demo.lecture.dto.LectureDto;
+import com.example.demo.lecture.service.LectureService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/lecture")
@@ -14,32 +18,29 @@ public class LectureController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody LectureDto.Register dto) {
-        LectureService.register(dto);
+        lectureService.register(dto);
 
         return ResponseEntity.status(200).body("등록 성공");
     }
 
     @GetMapping("/list")
     public ResponseEntity<List<LectureDto.Lecture>> list() {
-        List<LectureDto.Lecture> response = studentService.list();
+        List<LectureDto.Lecture> response = lectureService.list();
 
         return ResponseEntity.status(200).body(response);
     }
 
     @GetMapping("/read")
     public ResponseEntity<LectureDto.Lecture> read(Integer idx) {
-        LectureDto.Lecture response = studentService.read(idx);
+        LectureDto.Lecture response = lectureService.read(idx);
 
         return ResponseEntity.status(200).body(response);
     }
 
-
     @GetMapping("/search")
-    public ResponseEntityList<LectureDto.Lecture> search(String name) {
-        List<LectureDto.Lecture> response = LectureService.search(name);
+    public ResponseEntity<List<LectureDto.Lecture>> search(String name) {
+        List<LectureDto.Lecture> response = lectureService.search(name);
 
-
-        return ResponseEntity.lecture(200).body(response);
+        return ResponseEntity.status(200).body(response);
     }
-
 }
